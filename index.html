@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf7f1">
+  <title>Lingua — Học tiếng Anh cùng cún nhỏ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #3e2b20;
+      --muted: #8c7565;
+      --blue: #8b5e3c;
+      --blue-dark: #68432d;
+      --blue-soft: #f3e8dc;
+      --pink: #c98d5d;
+      --pink-soft: #faeee2;
+      --mint: #71917a;
+      --line: #eadfd3;
+      --surface: #fff;
+      --bg: #fbf7f1;
+      --shadow: 0 16px 45px rgba(91, 61, 38, .1);
+      font-family: "DM Sans", "Nunito", sans-serif;
+      color: var(--ink);
+      font-synthesis: none;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; background: var(--bg); }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .hidden { display: none !important; }
+    .landing { min-height: 100vh; overflow: hidden; background: var(--bg); }
+    .topbar { height: 82px; display: flex; align-items: center; justify-content: space-between; max-width: 1200px; padding: 0 26px; margin: auto; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-family: Nunito, sans-serif; font-size: 24px; font-weight: 900; letter-spacing: -.8px; color: var(--ink); }
+    .brand-mark { width: 36px; height: 36px; display: grid; place-items: center; color: white; border-radius: 12px; background: var(--blue); box-shadow: 0 7px 16px #8b5e3c44; }
+    .brand-mark svg { width: 22px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; color: #64718a; font-size: 14px; font-weight: 700; }
+    .nav-links a { color: inherit; text-decoration: none; }
+    .nav-links a:hover { color: var(--blue); }
+    .btn { border: 0; border-radius: 13px; padding: 13px 20px; font-weight: 800; transition: .18s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #fff; background: var(--blue); box-shadow: 0 9px 18px #8b5e3c38; }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-light { color: var(--blue); background: var(--blue-soft); }
+    .btn-outline { color: #4a5870; border: 1px solid var(--line); background: #fff; }
+    .hero { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 50px; max-width: 1200px; padding: 60px 26px 90px; margin: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 8px 13px; border-radius: 100px; color: var(--blue); background: var(--blue-soft); font-size: 12px; font-weight: 800; letter-spacing: .3px; }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--pink); }
+    h1 { max-width: 600px; margin: 23px 0 18px; font-family: Nunito, sans-serif; font-size: clamp(42px, 5.3vw, 66px); line-height: 1.08; letter-spacing: -2.8px; }
+    .highlight { color: var(--blue); position: relative; white-space: nowrap; }
+    .hero-copy { max-width: 505px; margin: 0; color: var(--muted); font-size: 17px; line-height: 1.8; }
+    .hero-actions { display: flex; align-items: center; gap: 15px; margin-top: 30px; }
+    .hero-actions .btn { padding: 15px 22px; }
+    .trust-row { display: flex; align-items: center; gap: 12px; margin-top: 36px; color: #79869c; font-size: 12px; font-weight: 700; }
+    .avatars { display: flex; padding-left: 5px; }
+    .avatar { width: 29px; height: 29px; display: grid; place-items: center; margin-left: -5px; border: 2px solid #fff; border-radius: 50%; background: #ffe0e9; font-size: 14px; }
+    .avatar:nth-child(2) { background: #dce5ff; }
+    .avatar:nth-child(3) { background: #d9f3ed; }
+    .hero-art { position: relative; min-height: 440px; display: grid; place-items: center; }
+    .art-glow { position: absolute; width: 390px; height: 390px; border-radius: 50%; background: linear-gradient(145deg, #f1e4d4, #fff6ea); }
+    .study-card { position: relative; z-index: 1; width: min(390px, 100%); padding: 24px; border: 1px solid #ffffff; border-radius: 24px; background: rgba(255,255,255,.92); box-shadow: 0 30px 70px #243d831a; transform: rotate(-2deg); }
+    .study-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+    .study-label { color: #8793a7; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .7px; }
+    .streak { padding: 8px 10px; border-radius: 10px; color: #ec8b46; background: #fff3e8; font-size: 12px; font-weight: 800; }
+    .word-card { padding: 20px; border-radius: 17px; background: #f6f8ff; }
+    .word-card small { color: #8c97aa; font-size: 12px; }
+    .word-card h3 { margin: 9px 0 4px; font-family: Nunito, sans-serif; font-size: 29px; }
+    .word-card p { margin: 0; color: #7b879d; font-size: 13px; }
+    .word-example { padding: 15px 4px 5px; color: #68758a; font-size: 13px; line-height: 1.6; }
+    .word-example strong { color: var(--blue); }
+    .card-progress { display: flex; justify-content: space-between; margin-top: 17px; color: #78859a; font-size: 12px; font-weight: 700; }
+    .progress-track { height: 7px; margin-top: 8px; border-radius: 8px; background: #ebeff8; }
+    .progress-fill { width: 66%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #6081ff, #ff91b5); }
+    .float-note { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 13px 16px; border: 1px solid #f1f3f8; border-radius: 15px; background: white; box-shadow: var(--shadow); font-size: 12px; font-weight: 800; }
+    .float-note span:first-child { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 10px; background: var(--pink-soft); font-size: 16px; }
+    .note-one { top: 42px; right: 0; transform: rotate(4deg); }
+    .note-two { bottom: 40px; left: 0; transform: rotate(-4deg); }
+    .landing-features { padding: 70px 26px 80px; background: #f5eee4; }
+    .section-heading { max-width: 700px; margin: 0 auto 38px; text-align: center; }
+    .section-heading h2 { margin: 12px 0; font-family: Nunito, sans-serif; font-size: 34px; letter-spacing: -1px; }
+    .section-heading p { color: var(--muted); line-height: 1.7; }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1100px; margin: auto; }
+    .feature { padding: 23px; border: 1px solid #edf0f6; border-radius: 18px; background: #fff; }
+    .feature-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; background: var(--blue-soft); font-size: 21px; }
+    .feature:nth-child(2) .feature-icon { background: var(--pink-soft); }
+    .feature:nth-child(3) .feature-icon { background: #e9f8f4; }
+    .feature h3 { margin: 15px 0 7px; font-size: 16px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .puppy-art { position: absolute; z-index: 2; right: 12px; bottom: 30px; width: 126px; filter: drop-shadow(0 10px 12px #5b3d2620); }
+    .banner-emoji .puppy-art { position: static; width: 112px; filter: drop-shadow(0 10px 12px #432c1d35); }
+    .curriculum-intro { padding: 18px 20px; margin-bottom: 16px; border-radius: 14px; color: #68432d; background: #f3e8dc; font-size: 12px; line-height: 1.7; }
+    .curriculum-group { margin: 10px 0; border: 1px solid var(--line); border-radius: 15px; background: #fffdf9; }
+    .curriculum-group summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; color: var(--ink); cursor: pointer; font-size: 13px; font-weight: 800; list-style: none; }
+    .curriculum-group summary::-webkit-details-marker { display: none; }
+    .curriculum-group summary:after { content: "+"; color: var(--blue); font-size: 18px; }
+    .curriculum-group[open] summary:after { content: "−"; }
+    .curriculum-count { margin-left: auto; color: var(--muted); font-size: 10px; font-weight: 700; }
+    .curriculum-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; padding: 0 14px 14px; margin: 0; list-style: none; }
+    .curriculum-list li { display: flex; flex-direction: column; gap: 4px; padding: 11px 12px; border-radius: 10px; background: #faf6f0; }
+    .curriculum-list li strong { font-size: 11px; }
+    .curriculum-list li span { color: var(--muted); font-size: 10px; line-height: 1.45; }
+
+    .app-shell { min-height: 100vh; display: grid; grid-template-columns: 250px minmax(0, 1fr); }
+    .sidebar { position: sticky; top: 0; height: 100vh; padding: 25px 17px; border-right: 1px solid var(--line); background: #fffdf9; }
+    .sidebar .brand { padding: 0 9px 28px; }
+    .side-label { margin: 8px 11px 10px; color: #a0a9b8; font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .side-link { width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px; margin-bottom: 4px; border: 0; border-radius: 12px; color: #738098; background: transparent; text-align: left; font-size: 13px; font-weight: 700; }
+    .side-link:hover, .side-link.active { color: var(--blue); background: var(--blue-soft); }
+    .side-icon { width: 21px; text-align: center; font-size: 17px; }
+    .side-spacer { height: 23px; }
+    .sidebar-bottom { position: absolute; right: 17px; bottom: 20px; left: 17px; }
+    .sidebar-help { padding: 15px; border-radius: 15px; background: linear-gradient(135deg,#f3e8dc,#faeee2); }
+    .sidebar-help strong { font-size: 12px; }
+    .sidebar-help p { margin: 7px 0 11px; color: #7c8799; font-size: 11px; line-height: 1.5; }
+    .sidebar-help button { padding: 0; border: 0; color: var(--blue); background: transparent; font-size: 11px; font-weight: 800; }
+    .main-area { min-width: 0; }
+    .app-header { height: 76px; display: flex; align-items: center; justify-content: space-between; padding: 0 35px; border-bottom: 1px solid var(--line); background: #fff; }
+    .breadcrumb { color: var(--muted); font-size: 13px; font-weight: 700; }
+    .header-right { display: flex; align-items: center; gap: 18px; }
+    .icon-button { width: 38px; height: 38px; display: grid; place-items: center; position: relative; border: 1px solid var(--line); border-radius: 12px; color: #738099; background: white; font-size: 17px; }
+    .notification-dot { position: absolute; top: 8px; right: 8px; width: 6px; height: 6px; border: 1px solid white; border-radius: 50%; background: var(--pink); }
+    .user-chip { display: flex; align-items: center; gap: 9px; color: #48566f; font-size: 12px; font-weight: 800; }
+    .user-chip-button { padding: 0; border: 0; background: transparent; cursor: pointer; }
+    .user-chip-button:hover { color: var(--blue); }
+    .user-avatar { width: 35px; height: 35px; display: grid; place-items: center; border-radius: 12px; background: #eaf0ff; font-size: 18px; }
+    .content { width: min(1220px, 100%); padding: 31px 35px 60px; margin: auto; }
+    .welcome-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 25px; }
+    .welcome-row h1 { margin: 0 0 7px; font-size: 27px; letter-spacing: -.8px; }
+    .welcome-row p { margin: 0; color: var(--muted); font-size: 13px; }
+    .date-pill { padding: 10px 13px; border: 1px solid var(--line); border-radius: 12px; color: #76839a; background: white; font-size: 12px; font-weight: 700; }
+    .welcome-banner { position: relative; display: flex; align-items: center; justify-content: space-between; min-height: 185px; padding: 28px 34px; overflow: hidden; border-radius: 20px; color: #fff; background: linear-gradient(110deg,#68432d 0%,#986b48 60%,#c99b6b 100%); }
+    .welcome-banner:after { content: ""; position: absolute; top: -90px; right: 5%; width: 320px; height: 320px; border: 1px solid #ffffff26; border-radius: 50%; box-shadow: 0 0 0 35px #ffffff0d, 0 0 0 70px #ffffff0a; }
+    .banner-copy { position: relative; z-index: 1; max-width: 570px; }
+    .banner-copy .mini-label { color: #f2dfc9; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .banner-copy h2 { margin: 9px 0 7px; font-family: Nunito, sans-serif; font-size: 25px; }
+    .banner-copy p { margin: 0 0 17px; color: #f7eadd; font-size: 12px; }
+    .banner-copy .btn { padding: 11px 16px; color: #68432d; background: white; font-size: 12px; }
+    .banner-emoji { position: relative; z-index: 1; margin: 0 30px 0 15px; font-size: 80px; filter: drop-shadow(0 10px 12px #203ec833); transform: rotate(-8deg); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0 30px; }
+    .stat-card { display: flex; align-items: center; gap: 13px; padding: 17px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    .stat-icon { width: 42px; height: 42px; display: grid; flex: 0 0 auto; place-items: center; border-radius: 13px; background: #edf2ff; font-size: 19px; }
+    .stat-card:nth-child(2) .stat-icon { background: #fff0f5; }
+    .stat-card:nth-child(3) .stat-icon { background: #eaf8f4; }
+    .stat-card:nth-child(4) .stat-icon { background: #fff5e8; }
+    .stat-card strong { display: block; font-family: Nunito, sans-serif; font-size: 20px; }
+    .stat-card small { color: #8995a8; font-size: 11px; font-weight: 700; }
+    .section-title-row { display: flex; align-items: center; justify-content: space-between; margin: 24px 0 14px; }
+    .section-title-row h2 { margin: 0; font-family: Nunito, sans-serif; font-size: 18px; }
+    .text-link { padding: 0; border: 0; color: var(--blue); background: transparent; font-size: 12px; font-weight: 800; }
+    .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .course-card { padding: 17px; border: 1px solid var(--line); border-radius: 16px; background: #fff; transition: .2s ease; }
+    .course-card:hover { border-color: #cdd7ff; transform: translateY(-3px); box-shadow: 0 12px 24px #213c8510; }
+    .course-top { display: flex; align-items: center; justify-content: space-between; }
+    .course-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; background: #eff3ff; font-size: 21px; }
+    .course-card:nth-child(2) .course-icon { background: #fff1f5; }
+    .course-card:nth-child(3) .course-icon { background: #eaf8f4; }
+    .level { padding: 6px 8px; border-radius: 8px; color: var(--blue); background: var(--blue-soft); font-size: 9px; font-weight: 800; }
+    .course-card h3 { margin: 14px 0 5px; font-size: 14px; }
+    .course-card p { min-height: 34px; margin: 0; color: #8591a5; font-size: 11px; line-height: 1.5; }
+    .course-meta { display: flex; justify-content: space-between; margin-top: 13px; color: #8793a7; font-size: 10px; font-weight: 700; }
+    .course-progress { height: 5px; margin-top: 8px; border-radius: 9px; background: #edf0f6; }
+    .course-progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg,var(--blue),#c99b6b); }
+    .below-grid { display: grid; grid-template-columns: 1.35fr .85fr; gap: 15px; margin-top: 20px; }
+    .panel { padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+    .panel-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 17px; }
+    .panel-heading h3 { margin: 0; font-family: Nunito, sans-serif; font-size: 15px; }
+    .panel-heading small { color: #909bae; font-size: 10px; }
+    .activity-row { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid #f0f2f7; }
+    .activity-badge { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: #edf2ff; }
+    .activity-copy { min-width: 0; flex: 1; }
+    .activity-copy strong { display: block; overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+    .activity-copy small { color: #8c97a9; font-size: 10px; }
+    .score-tag { padding: 6px 8px; border-radius: 8px; color: #239c7c; background: #e9f8f4; font-size: 10px; font-weight: 800; }
+    .empty-state { padding: 25px 10px; color: #909bae; text-align: center; font-size: 12px; line-height: 1.6; }
+    .streak-panel { overflow: hidden; background: linear-gradient(155deg,#fffdf9,#f8eee2); }
+    .streak-number { display: flex; align-items: baseline; gap: 6px; margin: 9px 0 14px; font-family: Nunito, sans-serif; font-size: 35px; font-weight: 900; }
+    .streak-number small { color: #8995a8; font-family: "DM Sans",sans-serif; font-size: 11px; font-weight: 700; }
+    .week { display: flex; justify-content: space-between; gap: 7px; }
+    .week-day { display: grid; gap: 7px; justify-items: center; color: #99a2b1; font-size: 9px; font-weight: 700; }
+    .week-day span { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 9px; color: #a1aabc; background: #f0f2f7; font-size: 11px; }
+    .week-day.done span { color: #fff; background: var(--pink); }
+    .week-day.today span { color: #fff; background: var(--blue); }
+
+    .view { display: none; }
+    .view.active { display: block; }
+    .lesson-layout { display: grid; grid-template-columns: minmax(0,1fr) 280px; gap: 18px; }
+    .lesson-main, .lesson-aside { padding: 23px; border: 1px solid var(--line); border-radius: 17px; background: #fff; }
+    .back-link { padding: 0; border: 0; color: #77849a; background: transparent; font-size: 12px; font-weight: 800; }
+    .lesson-main h2 { margin: 18px 0 6px; font-family: Nunito, sans-serif; font-size: 25px; }
+    .lesson-subtitle { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .lesson-progress-line { display: flex; justify-content: space-between; margin: 21px 0 8px; color: #8b97a9; font-size: 10px; font-weight: 800; }
+    .unit-list { margin-top: 20px; }
+    .unit { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #f0f2f7; }
+    .unit-number { width: 32px; height: 32px; display: grid; flex: 0 0 auto; place-items: center; border-radius: 11px; color: var(--blue); background: var(--blue-soft); font-size: 12px; font-weight: 800; }
+    .unit.completed .unit-number { color: #fff; background: var(--mint); }
+    .unit-copy { min-width: 0; flex: 1; }
+    .unit-copy strong { display: block; font-size: 12px; }
+    .unit-copy small { color: #8e99ab; font-size: 10px; }
+    .unit button { padding: 8px 10px; border: 0; border-radius: 9px; color: var(--blue); background: #f0f3ff; font-size: 10px; font-weight: 800; }
+    .aside-card { padding: 15px; border-radius: 13px; background: #f7f1e9; }
+    .aside-card h3 { margin: 0 0 7px; font-size: 12px; }
+    .aside-card p { margin: 0; color: #8591a5; font-size: 11px; line-height: 1.6; }
+    .lesson-aside .aside-card + .aside-card { margin-top: 12px; background: #faeee2; }
+    .vocab-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .vocab-categories { display: flex; gap: 8px; padding: 2px 0 16px; overflow-x: auto; }
+    .category-button { flex: 0 0 auto; padding: 9px 13px; border: 1px solid var(--line); border-radius: 10px; color: #748198; background: #fff; font-size: 11px; font-weight: 800; }
+    .category-button.active { border-color: #d7dfff; color: var(--blue); background: var(--blue-soft); }
+    .flashcard { min-height: 250px; display: grid; align-content: center; justify-items: center; padding: 25px; border-radius: 18px; color: #fff; background: linear-gradient(145deg,#68432d,#b17e54); text-align: center; box-shadow: 0 16px 32px #68432d33; }
+    .flashcard small { color: #f2dfc9; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .flashcard h2 { margin: 12px 0 5px; font-family: Nunito,sans-serif; font-size: 32px; }
+    .flashcard p { margin: 4px 0; color: #f8eee3; font-size: 13px; }
+    .flashcard .example { max-width: 340px; margin-top: 12px; font-size: 12px; line-height: 1.6; }
+    .vocab-controls { display: flex; justify-content: center; gap: 10px; margin-top: 14px; }
+    .vocab-controls .btn { padding: 11px 16px; }
+    .vocab-info { padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+    .vocab-info h3 { margin: 2px 0 13px; font-family: Nunito,sans-serif; }
+    .vocab-info p { color: #78859b; font-size: 12px; line-height: 1.7; }
+    .vocab-tip { padding: 13px; margin-top: 17px; border-radius: 12px; color: #74557a; background: #fff2f7; font-size: 11px; line-height: 1.6; }
+    .quiz-card { max-width: 720px; padding: 25px; border: 1px solid var(--line); border-radius: 17px; background: #fff; }
+    .quiz-card h2 { margin: 5px 0 8px; font-family: Nunito,sans-serif; font-size: 22px; }
+    .quiz-progress { color: #8d98aa; font-size: 11px; font-weight: 700; }
+    .quiz-question { margin: 22px 0 15px; font-size: 15px; font-weight: 800; line-height: 1.6; }
+    .answers { display: grid; gap: 9px; }
+    .answer-option { width: 100%; padding: 13px; border: 1px solid var(--line); border-radius: 11px; color: #526078; background: #fff; text-align: left; font-size: 12px; font-weight: 700; }
+    .answer-option:hover { border-color: #aab9ff; background: #f8f9ff; }
+    .answer-option.selected { border-color: var(--blue); color: var(--blue); background: #f0f3ff; }
+    .answer-option.correct { border-color: #63c9ad; color: #168b6c; background: #eefaf6; }
+    .answer-option.incorrect { border-color: #f3a5bb; color: #d55d7d; background: #fff3f6; }
+    .reading-layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 17px; }
+    .reading-passage, .reading-questions { padding: 22px; border: 1px solid var(--line); border-radius: 17px; background: #fff; }
+    .reading-level { display: inline-flex; padding: 6px 9px; border-radius: 8px; color: #617d65; background: #edf3e9; font-size: 10px; font-weight: 900; letter-spacing: .5px; }
+    .reading-passage h2, .reading-questions h2 { margin: 11px 0 8px; font-family: Nunito,sans-serif; font-size: 19px; }
+    .reading-passage > p { color: #59667d; font-size: 13px; line-height: 1.9; }
+    .reading-blank { display: inline-block; min-width: 34px; padding: 2px 6px; border-radius: 6px; color: var(--blue); background: var(--blue-soft); font-weight: 900; text-align: center; }
+    .reading-blank.correct { color: #168b6c; background: #eefaf6; }
+    .reading-blank.incorrect { color: #d55d7d; background: #fff3f6; }
+    .reading-questions p { color: #7d899d; font-size: 11px; line-height: 1.6; }
+    .reading-question { padding: 12px 0; border-top: 1px solid #f0f2f7; }
+    .reading-question label { display: block; margin-bottom: 8px; color: #526078; font-size: 11px; font-weight: 800; }
+    .reading-question select { width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 10px; color: #58667c; background: #fff; font-size: 11px; }
+    .reading-question select.correct { border-color: #83aa8b; color: #44674b; background: #edf5eb; }
+    .reading-question select.incorrect { border-color: #d7a07d; color: #8e5538; background: #faeee2; }
+    .reading-feedback { min-height: 34px; margin: 12px 0 3px; color: #718097; font-size: 11px; line-height: 1.5; }
+    .reading-result { padding: 13px; margin-top: 12px; border-radius: 12px; color: #5b493a; background: #f3e8dc; font-size: 12px; font-weight: 800; }
+    .reading-result strong { color: var(--blue); font-size: 19px; }
+    .quiz-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 18px; }
+    .quiz-feedback { min-height: 18px; color: #7b879a; font-size: 11px; font-weight: 700; }
+    .result-box { padding: 24px; border-radius: 15px; background: #f5eee4; text-align: center; }
+    .result-box strong { display: block; margin: 7px 0; font-family: Nunito,sans-serif; font-size: 30px; color: var(--blue); }
+    .result-box p { color: #77849a; font-size: 12px; line-height: 1.6; }
+    .ai-layout { display: grid; grid-template-columns: minmax(0, 1fr) 265px; gap: 16px; }
+    .chat-box { min-height: 430px; display: flex; flex-direction: column; padding: 18px; border: 1px solid var(--line); border-radius: 17px; background: #fff; }
+    .chat-head { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid #f0f2f7; }
+    .bot-avatar { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 13px; background: var(--blue-soft); font-size: 19px; }
+    .chat-head strong { display: block; font-size: 12px; }
+    .chat-head small { color: #28a986; font-size: 10px; font-weight: 700; }
+    .messages { flex: 1; padding: 15px 0; overflow-y: auto; }
+    .message { width: fit-content; max-width: 82%; padding: 11px 13px; margin-bottom: 10px; border-radius: 13px 13px 13px 4px; color: #58667e; background: #f3f5fa; font-size: 12px; line-height: 1.6; }
+    .message.mine { margin-left: auto; border-radius: 13px 13px 4px 13px; color: #fff; background: var(--blue); }
+    .chat-form { display: flex; gap: 8px; padding-top: 12px; border-top: 1px solid #f0f2f7; }
+    .chat-form input { min-width: 0; flex: 1; padding: 11px 13px; border: 1px solid var(--line); border-radius: 11px; outline: none; font-size: 12px; }
+    .chat-form input:focus { border-color: #9cacff; }
+    .chat-form button { width: 42px; border: 0; border-radius: 11px; color: #fff; background: var(--blue); font-size: 17px; }
+    .prompt-list { display: grid; gap: 8px; margin-top: 12px; }
+    .prompt-button { padding: 10px; border: 1px solid var(--line); border-radius: 10px; color: #67748a; background: #fff; text-align: left; font-size: 10px; font-weight: 700; }
+    .toast { position: fixed; z-index: 10; right: 22px; bottom: 22px; padding: 13px 17px; border-radius: 12px; color: white; background: #20304c; box-shadow: var(--shadow); font-size: 12px; animation: pop .2s ease; }
+    .modal-backdrop { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 18px; background: #15213a88; }
+    .login-modal { position: relative; width: min(420px, 100%); padding: 30px; border-radius: 22px; background: #fffdf9; box-shadow: 0 24px 80px #432c1d40; text-align: center; }
+    .reading-level-tabs { display: flex; gap: 8px; margin: 14px 0; }
+    .reading-level-tab { padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); background: #fff; font-size: 11px; font-weight: 800; }
+    .reading-level-tab.active { border-color: #c9a98b; color: var(--blue-dark); background: var(--blue-soft); }
+    .ielts-hero { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 27px 30px; margin-bottom: 18px; border-radius: 18px; color: #fff; background: linear-gradient(120deg,#5b3b29,#956947); }
+    .ielts-hero h2 { margin: 9px 0 6px; font-family: Nunito,sans-serif; font-size: 24px; }
+    .ielts-hero p { margin: 0; color: #f1e2d2; font-size: 12px; line-height: 1.6; }
+    .ielts-hero .puppy-art { flex: 0 0 auto; }
+    .ielts-skill-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 20px; }
+    .ielts-skill { padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: #fffdf9; }
+    .ielts-skill span { font-size: 20px; }
+    .ielts-skill h3 { margin: 9px 0 4px; font-size: 13px; }
+    .ielts-skill p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
+    .ielts-practice { padding: 22px; border: 1px solid var(--line); border-radius: 16px; background: #fffdf9; }
+    .ielts-practice h2 { margin: 8px 0; font-family: Nunito,sans-serif; font-size: 19px; }
+    .ielts-passage { color: #59667d; font-size: 13px; line-height: 1.8; }
+    .ielts-question { padding: 12px 0; border-top: 1px solid var(--line); }
+    .ielts-question strong { display: block; margin-bottom: 9px; font-size: 12px; }
+    .ielts-option { margin: 0 7px 7px 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 9px; color: #526078; background: #fff; font-size: 11px; }
+    .ielts-option.selected { border-color: var(--blue); color: var(--blue-dark); background: var(--blue-soft); }
+    .ielts-option.correct { border-color: #83aa8b; color: #44674b; background: #edf5eb; }
+    .ielts-option.incorrect { border-color: #d7a07d; color: #8e5538; background: #faeee2; }
+    .ielts-feedback { min-height: 20px; margin: 10px 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .modal-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border: 0; border-radius: 10px; color: #78859b; background: #f3f5fa; font-size: 18px; }
+    .login-modal .brand { justify-content: center; margin: 4px auto 18px; }
+    .login-modal h2 { margin: 0 0 7px; font-family: Nunito,sans-serif; font-size: 23px; }
+    .login-modal > p { margin: 0 0 22px; color: #8591a5; font-size: 12px; line-height: 1.6; }
+    .social-login { width: 100%; display: flex; align-items: center; justify-content: center; gap: 11px; padding: 13px; margin-top: 10px; border: 1px solid var(--line); border-radius: 12px; color: #445169; background: white; font-size: 13px; font-weight: 800; }
+    .social-login:hover { border-color: #bac6ff; background: #fafbff; }
+    .social-login:disabled { cursor: not-allowed; opacity: .65; }
+    .social-icon { width: 20px; font-size: 16px; font-weight: 900; }
+    .profile-form { display: grid; gap: 13px; text-align: left; }
+    .profile-form label { display: grid; gap: 6px; color: #5b493a; font-size: 11px; font-weight: 800; }
+    .profile-form input { width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 11px; color: var(--ink); background: #fff; font: inherit; font-size: 13px; }
+    .profile-form input:focus { border-color: #b99573; outline: 3px solid #f3e8dc; }
+    .profile-form .btn { margin-top: 3px; }
+    .profile-form-status { min-height: 16px; margin: 0; color: #9a4f38; font-size: 11px; line-height: 1.5; }
+    .login-status { min-height: 18px; margin: 13px 0 0; color: #9a4f38; font-size: 11px; line-height: 1.6; }
+    .login-note { display: block; margin-top: 10px; color: #86796f; font-size: 10px; line-height: 1.6; }
+    @keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 900px) {
+      .hero { gap: 20px; }
+      .hero-art { min-height: 370px; }
+      .art-glow { width: 310px; height: 310px; }
+      .note-one { right: -2px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .course-grid { grid-template-columns: repeat(2,1fr); }
+      .ielts-skill-grid { grid-template-columns: repeat(2,1fr); }
+      .app-shell { grid-template-columns: 72px minmax(0,1fr); }
+      .sidebar { padding: 20px 9px; }
+      .sidebar .brand { padding: 0 8px 26px; }
+      .sidebar .brand-name, .side-label, .side-link .side-text, .sidebar-help { display: none; }
+      .side-link { justify-content: center; padding: 12px 8px; }
+      .side-icon { font-size: 19px; }
+      .sidebar-bottom { right: 9px; left: 9px; }
+      .lesson-layout { grid-template-columns: 1fr; }
+      .lesson-aside { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .lesson-aside .aside-card + .aside-card { margin: 0; }
+      .reading-layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 650px) {
+      .topbar { height: 68px; padding: 0 18px; }
+      .nav-links { gap: 10px; }
+      .nav-links a { display: none; }
+      .nav-links .btn { padding: 10px 13px; font-size: 12px; }
+      .brand { font-size: 21px; }
+      .hero { grid-template-columns: 1fr; padding: 43px 20px 55px; }
+      h1 { margin-top: 18px; font-size: clamp(40px, 11vw, 55px); letter-spacing: -2px; }
+      .hero-copy { font-size: 15px; }
+      .hero-actions { flex-wrap: wrap; }
+      .hero-actions .btn { flex: 1; padding: 14px 11px; font-size: 12px; }
+      .hero-art { min-height: 340px; margin-top: 4px; }
+      .puppy-art { right: 3px; bottom: 20px; width: 92px; }
+      .banner-emoji .puppy-art { width: 76px; }
+      .study-card { width: min(340px, 90%); padding: 19px; }
+      .art-glow { width: 290px; height: 290px; }
+      .float-note { padding: 9px 11px; font-size: 10px; }
+      .note-one { top: 25px; right: 1px; }
+      .note-two { bottom: 20px; left: 0; }
+      .landing-features { padding: 50px 20px; }
+      .section-heading h2 { font-size: 28px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature { padding: 19px; }
+      .app-shell { display: block; padding-bottom: 68px; }
+      .sidebar { position: fixed; z-index: 5; top: auto; right: 0; bottom: 0; left: 0; width: 100%; height: 65px; display: flex; align-items: center; justify-content: space-around; padding: 5px 8px; border-top: 1px solid var(--line); border-right: 0; box-shadow: 0 -7px 20px #1e34500a; }
+      .sidebar .brand, .sidebar .side-label, .sidebar .side-spacer, .sidebar-bottom { display: none; }
+      .sidebar nav { width: 100%; display: flex; justify-content: space-around; }
+      .side-link { width: auto; min-width: 0; flex: 1; display: grid; justify-items: center; gap: 1px; padding: 6px 1px; margin: 0; font-size: 8px; }
+      .side-link .side-text { max-width: 52px; display: block; font-size: 8px; line-height: 1.15; text-align: center; }
+      .side-icon { font-size: 17px; }
+      .app-header { height: 60px; padding: 0 17px; }
+      .header-right { gap: 10px; }
+      .header-right .icon-button { width: 34px; height: 34px; }
+      .user-chip > span:not(.user-avatar) { display: none; }
+      .content { padding: 23px 16px 30px; }
+      .welcome-row { align-items: center; margin-bottom: 18px; }
+      .welcome-row h1 { font-size: 22px; }
+      .welcome-row p { max-width: 230px; font-size: 11px; line-height: 1.5; }
+      .date-pill { display: none; }
+      .welcome-banner { min-height: 160px; padding: 21px; }
+      .banner-copy h2 { font-size: 21px; }
+      .banner-copy p { max-width: 230px; line-height: 1.5; }
+      .banner-emoji { margin: 0 3px 0 0; font-size: 48px; }
+      .ielts-hero { padding: 21px; }
+      .ielts-hero .puppy-art { width: 76px; }
+      .ielts-skill-grid { grid-template-columns: repeat(2,1fr); gap: 8px; }
+      .ielts-skill { padding: 12px; }
+      .ielts-practice { padding: 17px; }
+      .curriculum-list { grid-template-columns: 1fr; }
+      .curriculum-group summary { padding: 14px; }
+      .stats-grid { gap: 9px; margin: 14px 0 23px; }
+      .stat-card { gap: 9px; padding: 12px 10px; }
+      .stat-icon { width: 34px; height: 34px; border-radius: 10px; font-size: 16px; }
+      .stat-card strong { font-size: 17px; }
+      .stat-card small { font-size: 9px; }
+      .course-grid { grid-template-columns: 1fr; }
+      .course-card { padding: 15px; }
+      .course-card p { min-height: 0; }
+      .below-grid { grid-template-columns: 1fr; }
+      .section-title-row h2 { font-size: 16px; }
+      .lesson-main, .lesson-aside { padding: 17px; }
+      .lesson-aside { grid-template-columns: 1fr; }
+      .vocab-layout, .ai-layout { grid-template-columns: 1fr; }
+      .vocab-info { order: 2; }
+      .flashcard { min-height: 230px; }
+      .quiz-card { padding: 19px; }
+      .quiz-card h2 { font-size: 19px; }
+      .quiz-footer { align-items: flex-start; flex-direction: column; }
+      .quiz-footer .btn { width: 100%; }
+      .ai-layout > .vocab-info { order: 0; }
+      .chat-box { min-height: 390px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *:before, *:after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <section class="landing" id="landing">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Lingua trang chủ"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 6.5c2.5-.9 4.8-.5 7 1.1v11c-2.2-1.6-4.5-2-7-1.1v-11Zm14 0c-2.5-.9-4.8-.5-7 1.1v11c2.2-1.6 4.5-2 7-1.1v-11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><span class="brand-name">lingua</span></a>
+      <nav class="nav-links" aria-label="Điều hướng"><a href="#features">Tính năng</a><a href="#how">Cách học</a><button class="btn btn-primary" data-login>Đăng nhập</button></nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> HỌC TIẾNG ANH MỖI NGÀY, TIẾN BỘ MỖI NGÀY</div>
+          <h1>Tiếng Anh giỏi hơn, <span class="highlight">bắt đầu từ hôm nay.</span></h1>
+          <p class="hero-copy">Luyện tiếng Anh trình độ B1–B2 qua bài đọc điền từ tự chấm, flashcard và những bài học ngắn gọn. Muốn thi IELTS? Đã có một góc luyện thi riêng cho bạn.</p>
+          <div class="hero-actions"><button class="btn btn-primary" data-login>Bắt đầu miễn phí <span aria-hidden="true">→</span></button><a class="btn btn-outline" href="#features" style="text-decoration:none">Khám phá cách học</a></div>
+          <div class="trust-row"><div class="avatars"><span class="avatar">👩🏻‍🎓</span><span class="avatar">👨🏽‍🎓</span><span class="avatar">👩🏾‍💻</span></div><span>Cùng hàng nghìn bạn trẻ học tiếng Anh mỗi ngày</span></div>
+        </div>
+        <div class="hero-art" aria-label="Thẻ từ vựng mẫu">
+          <div class="art-glow"></div>
+          <div class="float-note note-one"><span>✨</span><span>Học theo mục tiêu của bạn</span></div>
+          <div class="study-card">
+            <div class="study-card-top"><span class="study-label">Từ vựng hôm nay</span><span class="streak">🔥 5 ngày</span></div>
+            <div class="word-card"><small>/əˈtend/ · verb</small><h3>attend</h3><p>tham dự, có mặt</p><div class="word-example">“I <strong>attend</strong> lectures every Monday.”<br>→ Mình tham dự các buổi học vào thứ Hai.</div></div>
+            <div class="card-progress"><span>Tiến độ hôm nay</span><span>4 / 6 từ</span></div><div class="progress-track"><div class="progress-fill"></div></div>
+          </div>
+          <svg class="puppy-art" viewBox="0 0 180 150" role="img" aria-label="Chú cún nâu đáng yêu">
+            <ellipse cx="86" cy="120" rx="53" ry="22" fill="#b57d52"/>
+            <path d="M50 75c-10-29-7-55 7-60 17-6 28 20 29 38m33 22c19-25 43-34 51-21 8 14-7 34-28 43" fill="#8b583a"/>
+            <ellipse cx="94" cy="79" rx="48" ry="43" fill="#d5a574"/>
+            <ellipse cx="96" cy="94" rx="33" ry="24" fill="#f3dfc5"/>
+            <ellipse cx="96" cy="81" rx="8" ry="6" fill="#38251a"/>
+            <ellipse cx="76" cy="72" rx="4" ry="5" fill="#38251a"/>
+            <ellipse cx="116" cy="72" rx="4" ry="5" fill="#38251a"/>
+            <path d="M89 102q7 8 14 0" fill="none" stroke="#805338" stroke-width="3" stroke-linecap="round"/>
+            <path d="M62 119v12m58-12v12" stroke="#805338" stroke-width="8" stroke-linecap="round"/>
+            <path d="M70 53q8-10 15-1m27 0q8-9 15 1" fill="none" stroke="#edc693" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <div class="float-note note-two"><span>🎯</span><span>Ôn tập thông minh · 10 phút/ngày</span></div>
+        </div>
+      </section>
+      <section class="landing-features" id="features">
+        <div class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> HỌC THEO CÁCH CỦA BẠN</span><h2>Mỗi ngày một chút, tự tin hơn thật nhiều</h2><p>Lộ trình rõ ràng, nội dung gần gũi với việc học và cuộc sống của bạn.</p></div>
+        <div class="feature-grid" id="how">
+          <article class="feature"><div class="feature-icon">📚</div><h3>Lộ trình B1–B2</h3><p>Luyện chắc ngữ pháp, từ vựng học thuật và các cấu trúc thường gặp ở trình độ trung cấp.</p></article>
+          <article class="feature"><div class="feature-icon">🧠</div><h3>Flashcard nhớ lâu</h3><p>Ôn từ mới với thẻ ghi nhớ hai mặt, có phiên âm, nghĩa và câu ví dụ cụ thể.</p></article>
+          <article class="feature"><div class="feature-icon">✍️</div><h3>Đọc hiểu điền từ</h3><p>Bài đọc tiếng Anh B1–B2, câu hỏi hoàn toàn bằng tiếng Anh và chấm điểm tức thì.</p></article>
+          <article class="feature"><div class="feature-icon">🎓</div><h3>Góc luyện thi IELTS</h3><p>Một khu vực riêng để làm quen với các dạng bài và kỹ năng trong kỳ thi IELTS.</p></article>
+        </div>
+      </section>
+    </main>
+    <footer style="padding:25px;text-align:center;color:#8c7565;font-size:11px">© 2026 Lingua · Học vui, tiến bộ mỗi ngày 🤎</footer>
+  </section>
+
+  <section class="app-shell hidden" id="app">
+    <aside class="sidebar">
+      <a class="brand" href="#" data-view="dashboard"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 6.5c2.5-.9 4.8-.5 7 1.1v11c-2.2-1.6-4.5-2-7-1.1v-11Zm14 0c-2.5-.9-4.8-.5-7 1.1v11c2.2-1.6 4.5-2-7-1.1v-11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><span class="brand-name">lingua</span></a>
+      <div class="side-label">Tổng quan</div>
+      <nav aria-label="Menu học tập">
+        <button class="side-link active" data-view="dashboard"><span class="side-icon">⌂</span><span class="side-text">Trang chủ</span></button>
+        <button class="side-link" data-view="lesson"><span class="side-icon">📖</span><span class="side-text">Bài học</span></button>
+        <button class="side-link" data-view="vocabulary"><span class="side-icon">▣</span><span class="side-text">Flashcard</span></button>
+        <button class="side-link" data-view="quiz"><span class="side-icon">✎</span><span class="side-text">Bài kiểm tra</span></button>
+        <button class="side-link" data-view="reading"><span class="side-icon">📝</span><span class="side-text">Đọc hiểu</span></button>
+        <button class="side-link" data-view="ielts"><span class="side-icon">🎓</span><span class="side-text">IELTS</span></button>
+        <button class="side-link" data-view="ai"><span class="side-icon">✦</span><span class="side-text">Trợ lý AI</span></button>
+        <div class="side-spacer"></div><div class="side-label">Cá nhân</div>
+        <button class="side-link" id="logout"><span class="side-icon">↪</span><span class="side-text">Đăng xuất</span></button>
+      </nav>
+      <div class="sidebar-bottom"><div class="sidebar-help"><strong>✨ Cần trợ giúp?</strong><p>Hỏi Lingua AI để được giải thích bài học nhé.</p><button data-view="ai">Trò chuyện ngay →</button></div></div>
+    </aside>
+    <div class="main-area">
+      <header class="app-header"><div class="breadcrumb" id="breadcrumb">Không gian học tập <span style="color:#c0c7d2"> / </span> Trang chủ</div><div class="header-right"><button class="icon-button" aria-label="Thông báo">♧<span class="notification-dot"></span></button><button class="user-chip user-chip-button" id="edit-profile" type="button" aria-label="Chỉnh sửa hồ sơ"><span class="user-avatar">👩🏻‍🎓</span><span id="user-name">Minh Anh</span></button></div></header>
+      <main class="content">
+        <section class="view active" id="view-dashboard">
+          <div class="welcome-row"><div><h1>Chào <span id="greeting-name">Minh Anh</span>! 👋</h1><p>Sẵn sàng chinh phục thêm một chút tiếng Anh hôm nay chưa?</p></div><div class="date-pill" id="today-date"></div></div>
+          <div class="welcome-banner"><div class="banner-copy"><div class="mini-label">LỘ TRÌNH HỌC TẬP</div><h2>Ngữ pháp tiếng Anh B1–B2</h2><p>Khám phá 7 nhóm chủ điểm, từ 12 thì đến cấu trúc ngữ pháp nâng cao.</p><button class="btn" data-view="lesson">Xem giáo trình <span>→</span></button></div><div class="banner-emoji"><svg class="puppy-art" viewBox="0 0 180 150" role="img" aria-label="Cún nhỏ đồng hành"><ellipse cx="86" cy="120" rx="53" ry="22" fill="#d4a276"/><path d="M50 75c-10-29-7-55 7-60 17-6 28 20 29 38m33 22c19-25 43-34 51-21 8 14-7 34-28 43" fill="#a16b47"/><ellipse cx="94" cy="79" rx="48" ry="43" fill="#e0b789"/><ellipse cx="96" cy="94" rx="33" ry="24" fill="#f3dfc5"/><ellipse cx="96" cy="81" rx="8" ry="6" fill="#38251a"/><ellipse cx="76" cy="72" rx="4" ry="5" fill="#38251a"/><ellipse cx="116" cy="72" rx="4" ry="5" fill="#38251a"/><path d="M89 102q7 8 14 0" fill="none" stroke="#805338" stroke-width="3" stroke-linecap="round"/><path d="M62 119v12m58-12v12" stroke="#805338" stroke-width="8" stroke-linecap="round"/></svg></div></div>
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-icon">⚡</div><div><strong>5 ngày</strong><small>Chuỗi học liên tiếp</small></div></div>
+            <div class="stat-card"><div class="stat-icon">🎯</div><div><strong>68%</strong><small>Tiến độ khóa học</small></div></div>
+            <div class="stat-card"><div class="stat-icon">🧠</div><div><strong id="word-count">24</strong><small>Từ đã ghi nhớ</small></div></div>
+            <div class="stat-card"><div class="stat-icon">🏆</div><div><strong id="test-count">3</strong><small>Bài kiểm tra đã làm</small></div></div>
+          </div>
+          <div class="section-title-row"><h2>Lộ trình học của bạn</h2><button class="text-link" data-view="lesson">Xem tất cả →</button></div>
+          <div class="course-grid">
+            <article class="course-card" data-open-lesson><div class="course-top"><div class="course-icon">⏳</div><span class="level">B1–B2</span></div><h3>Chinh phục các thì tiếng Anh</h3><p>Nắm vững 12 thì cùng cách dùng trong giao tiếp và bài thi.</p><div class="course-meta"><span>8 bài học</span><span>68%</span></div><div class="course-progress"><span style="width:68%"></span></div></article>
+            <article class="course-card" data-open-lesson><div class="course-top"><div class="course-icon">🧩</div><span class="level">B1–B2</span></div><h3>Ngữ pháp nền tảng</h3><p>Từ loại, cấu trúc câu và những điểm ngữ pháp thiết yếu.</p><div class="course-meta"><span>7 nhóm chủ điểm</span><span>32%</span></div><div class="course-progress"><span style="width:32%;background:linear-gradient(90deg,#b77d52,#ddbd98)"></span></div></article>
+            <article class="course-card" data-view="ielts"><div class="course-top"><div class="course-icon">🎓</div><span class="level">IELTS</span></div><h3>IELTS Academy</h3><p>Làm quen với Listening, Reading, Writing và Speaking.</p><div class="course-meta"><span>4 kỹ năng</span><span>New</span></div><div class="course-progress"><span style="width:12%;background:linear-gradient(90deg,#71917a,#b1c69e)"></span></div></article>
+          </div>
+          <div class="below-grid">
+            <section class="panel"><div class="panel-heading"><h3>Kết quả gần đây</h3><button class="text-link" data-view="quiz">Làm bài mới →</button></div><div id="recent-results"><div class="activity-row"><div class="activity-badge">⏳</div><div class="activity-copy"><strong>Kiểm tra: Thì hiện tại đơn</strong><small>Hôm qua · 5 câu hỏi</small></div><span class="score-tag">4/5 đúng</span></div><div class="activity-row"><div class="activity-badge" style="background:#fff0f5">🧩</div><div class="activity-copy"><strong>Mini test: Câu điều kiện</strong><small>Thứ Sáu · 5 câu hỏi</small></div><span class="score-tag">5/5 đúng</span></div></div></section>
+            <section class="panel streak-panel"><div class="panel-heading"><h3>Thói quen tuần này</h3><small>🔥 Đà học tốt lắm!</small></div><div class="streak-number">5 <small>ngày liên tiếp</small></div><div class="week"><div class="week-day done"><span>✓</span>T2</div><div class="week-day done"><span>✓</span>T3</div><div class="week-day done"><span>✓</span>T4</div><div class="week-day done"><span>✓</span>T5</div><div class="week-day done"><span>✓</span>T6</div><div class="week-day today"><span>•</span>T7</div><div class="week-day"><span>·</span>CN</div></div></section>
+          </div>
+        </section>
+        <section class="view" id="view-lesson">
+          <div class="welcome-row"><div><h1>Giáo trình ngữ pháp B1–B2 📚</h1><p>Chọn một nhóm để xem các chủ điểm và bản dịch tiếng Việt.</p></div></div>
+          <div class="curriculum-intro"><strong>Lộ trình học gồm 7 nhóm, 74 chủ điểm.</strong> Mở từng mục để xem tên bài học tiếng Anh cùng nghĩa tiếng Việt.</div>
+          <div class="lesson-layout"><section class="lesson-main"><div id="curriculum"></div></section><aside class="lesson-aside"><div class="aside-card"><h3>🎯 Cách học gợi ý</h3><p>Bắt đầu với 12 thì, sau đó ôn từ loại và cấu trúc câu trước khi chuyển sang các dạng nâng cao.</p></div><div class="aside-card"><h3>💡 Luyện tập cùng bài đọc</h3><p>Dùng mục Đọc hiểu để luyện điền từ tiếng Anh ở trình độ B1–B2 và xem điểm ngay sau khi nộp bài.</p></div></aside></div>
+        </section>
+        <section class="view" id="view-vocabulary">
+          <div class="welcome-row"><div><h1>Flashcard từ vựng 🧠</h1><p>Lật thẻ, đọc ví dụ và ghi nhớ từ mới theo cách của bạn.</p></div></div>
+          <nav class="vocab-categories" id="vocab-categories" aria-label="Chọn bộ flashcard"></nav>
+          <div class="vocab-layout"><div><div class="flashcard" id="flashcard"><small id="word-pos"></small><h2 id="word-front"></h2><p id="word-back" class="hidden"></p><p id="word-example" class="example hidden"></p><button id="flip-card" class="btn" style="margin-top:16px;color:#68432d;background:white">Lật thẻ xem nghĩa ↻</button></div><div class="vocab-controls"><button class="btn btn-outline" id="prev-word">← Từ trước</button><button class="btn btn-primary" id="next-word">Từ tiếp theo →</button></div></div><aside class="vocab-info"><h3>📘 Học từ vựng hiệu quả</h3><p>Mỗi thẻ gồm phiên âm, từ loại, nghĩa tiếng Việt và câu ví dụ trong ngữ cảnh thực tế.</p><p>Chọn bộ thẻ theo chuyên môn hoặc luyện các idiom thường gặp.</p><div class="vocab-tip">🌱 <strong>Mẹo nhỏ:</strong> Hãy tự đặt thêm một câu với từ mới để nhớ lâu hơn nhé!</div><p style="margin-top:18px;font-weight:800;color:#526078">Bộ thẻ: <span id="category-name">Từ vựng học đường</span><span id="word-index" style="float:right;color:#8692a5">1 / 5</span></p></aside></div>
+        </section>
+        <section class="view" id="view-quiz">
+          <div class="welcome-row"><div><h1>Mini test ôn tập ✏️</h1><p>Mỗi câu hỏi là một bước nhỏ để bạn nhớ bài lâu hơn.</p></div></div>
+          <div class="quiz-card" id="quiz-card"><div class="quiz-progress" id="quiz-progress">CÂU 1 / 5</div><h2>Thì hiện tại hoàn thành</h2><div class="quiz-question" id="quiz-question"></div><div class="answers" id="quiz-answers"></div><div class="quiz-footer"><div class="quiz-feedback" id="quiz-feedback"></div><button class="btn btn-primary" id="quiz-next">Kiểm tra đáp án</button></div></div>
+        </section>
+        <section class="view" id="view-reading">
+          <div class="welcome-row"><div><h1>Đọc hiểu tiếng Anh 📖</h1><p>Luyện bài điền từ trình độ B1–B2. Câu hỏi và đáp án đều bằng tiếng Anh, máy sẽ chấm ngay sau khi nộp.</p></div></div>
+          <div class="reading-level-tabs" role="group" aria-label="Chọn trình độ bài đọc">
+            <button class="reading-level-tab active" data-reading-level="b1" aria-pressed="true">B1 · Intermediate</button>
+            <button class="reading-level-tab" data-reading-level="b2" aria-pressed="false">B2 · Upper-intermediate</button>
+          </div>
+          <div class="reading-layout" id="reading-exercise"></div>
+        </section>
+        <section class="view" id="view-ielts">
+          <div class="welcome-row"><div><h1>IELTS Academy 🎓</h1><p>Một không gian riêng để làm quen với bốn kỹ năng và dạng bài IELTS.</p></div><div class="date-pill">Mục tiêu gợi ý · Band 6.5</div></div>
+          <div class="ielts-hero">
+            <div><span class="reading-level">IELTS PREPARATION</span><h2>Build your confidence, one skill at a time.</h2><p>Luyện tập có mục tiêu, xem giải thích đáp án và theo dõi tiến bộ của bạn.</p></div>
+            <svg class="puppy-art" viewBox="0 0 180 150" role="img" aria-label="Cún nhỏ học IELTS"><ellipse cx="86" cy="120" rx="53" ry="22" fill="#d4a276"/><path d="M50 75c-10-29-7-55 7-60 17-6 28 20 29 38m33 22c19-25 43-34 51-21 8 14-7 34-28 43" fill="#a16b47"/><ellipse cx="94" cy="79" rx="48" ry="43" fill="#e0b789"/><ellipse cx="96" cy="94" rx="33" ry="24" fill="#f3dfc5"/><ellipse cx="96" cy="81" rx="8" ry="6" fill="#38251a"/><ellipse cx="76" cy="72" rx="4" ry="5" fill="#38251a"/><ellipse cx="116" cy="72" rx="4" ry="5" fill="#38251a"/><path d="M89 102q7 8 14 0" fill="none" stroke="#805338" stroke-width="3" stroke-linecap="round"/><path d="M62 119v12m58-12v12" stroke="#805338" stroke-width="8" stroke-linecap="round"/></svg>
+          </div>
+          <div class="ielts-skill-grid">
+            <article class="ielts-skill"><span>🎧</span><h3>Listening</h3><p>Nghe ý chính, chi tiết và từ khoá.</p></article>
+            <article class="ielts-skill"><span>📖</span><h3>Reading</h3><p>Skimming, scanning và nhận diện paraphrase.</p></article>
+            <article class="ielts-skill"><span>✍️</span><h3>Writing</h3><p>Task 1, Task 2 và cách phát triển ý.</p></article>
+            <article class="ielts-skill"><span>🗣️</span><h3>Speaking</h3><p>Trả lời mạch lạc, mở rộng câu trả lời.</p></article>
+          </div>
+          <section class="ielts-practice" aria-labelledby="ielts-reading-title">
+            <span class="reading-level">IELTS READING · QUICK PRACTICE</span>
+            <h2 id="ielts-reading-title">Urban trees and cooler streets</h2>
+            <p class="ielts-passage">In many cities, trees do more than improve the appearance of a street. Their shade can lower surface temperatures, while leaves provide habitats for birds and insects. However, urban planners must choose species carefully: trees that need too much water may not survive during long dry periods. Some city councils now involve local residents in caring for young trees, which can increase a sense of responsibility for shared public spaces.</p>
+            <div class="ielts-question" data-ielts-question="0"><strong>1. What is one effect of shade from trees?</strong><button class="ielts-option" data-ielts-option="A">A. It lowers surface temperatures.</button><button class="ielts-option" data-ielts-option="B">B. It reduces the number of streets.</button><button class="ielts-option" data-ielts-option="C">C. It increases water use in every season.</button></div>
+            <div class="ielts-question" data-ielts-question="1"><strong>2. Why should planners select tree species carefully?</strong><button class="ielts-option" data-ielts-option="A">A. Some species attract too many residents.</button><button class="ielts-option" data-ielts-option="B">B. Trees may not survive if they require too much water.</button><button class="ielts-option" data-ielts-option="C">C. Most trees cannot provide habitats.</button></div>
+            <div class="ielts-question" data-ielts-question="2"><strong>3. What can resident involvement encourage?</strong><button class="ielts-option" data-ielts-option="A">A. A stronger sense of responsibility for public spaces.</button><button class="ielts-option" data-ielts-option="B">B. The removal of all urban trees.</button><button class="ielts-option" data-ielts-option="C">C. A ban on planting young trees.</button></div>
+            <div class="ielts-feedback" id="ielts-feedback" role="status"></div>
+            <button class="btn btn-primary" id="check-ielts">Check answers</button>
+            <button class="btn btn-outline hidden" id="retry-ielts">Try again</button>
+          </section>
+        </section>
+        <section class="view" id="view-ai">
+          <div class="welcome-row"><div><h1>Trợ lý học tập AI ✨</h1><p>Cứ hỏi thoải mái nhé — cùng nhau tìm hiểu bài học thật dễ dàng.</p></div></div>
+          <div class="ai-layout"><div class="chat-box"><div class="chat-head"><div class="bot-avatar">🤖</div><div><strong>Lingua AI</strong><small>● Sẵn sàng hỗ trợ bạn</small></div></div><div class="messages" id="messages"><div class="message">Chào Minh Anh! Mình có thể giải thích ngữ pháp, giúp bạn đặt câu hoặc luyện từ vựng. Hôm nay bạn muốn học gì nè? 😊</div></div><form class="chat-form" id="chat-form"><input id="chat-input" placeholder="Hỏi mình điều bạn đang thắc mắc..." autocomplete="off" aria-label="Tin nhắn cho trợ lý"><button aria-label="Gửi tin nhắn">➤</button></form></div><aside class="vocab-info"><h3>Gợi ý câu hỏi</h3><p>Bắt đầu cuộc trò chuyện với một trong những câu hỏi này nhé.</p><div class="prompt-list"><button class="prompt-button">Giải thích thì hiện tại hoàn thành giúp mình</button><button class="prompt-button">Phân biệt “say” và “tell” thế nào?</button><button class="prompt-button">Cho mình 3 idiom về việc học</button><button class="prompt-button">Tạo câu ví dụ với “achieve”</button></div><div class="vocab-tip">ℹ️ Đây là trợ lý minh họa trong bản demo. Cần kết nối dịch vụ AI để trả lời kiến thức thực tế.</div></aside></div>
+        </section>
+      </main>
+    </div>
+  </section>
+  <div class="modal-backdrop hidden" id="login-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+    <div class="login-modal">
+      <button class="modal-close" id="close-login" aria-label="Đóng">×</button>
+      <a class="brand" href="#" aria-label="Lingua"><span class="brand-mark">L</span><span>lingua</span></a>
+      <h2 id="login-title">Chào mừng bạn đến với Lingua!</h2>
+      <p>Đăng nhập để lưu hành trình và tiếp tục học mỗi ngày.</p>
+      <form class="profile-form" id="profile-form">
+        <label for="profile-name">Tên của bạn<input id="profile-name" name="name" type="text" autocomplete="name" maxlength="60" placeholder="Ví dụ: Minh Anh" required></label>
+        <label for="profile-birthday">Ngày tháng năm sinh<input id="profile-birthday" name="birthday" type="date" autocomplete="bday" required></label>
+        <p class="profile-form-status" id="profile-form-status" role="status" aria-live="polite"></p>
+        <button class="btn btn-primary" id="profile-submit" type="submit">Vào học</button>
+      </form>
+      <small class="login-note">Hồ sơ demo được lưu trên trình duyệt này; không cần tài khoản hoặc mật khẩu.</small>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script>
+    const landing = document.getElementById("landing");
+    const app = document.getElementById("app");
+    const viewNames = { dashboard: "Trang chủ", lesson: "Bài học", vocabulary: "Flashcard", quiz: "Bài kiểm tra", reading: "Đọc hiểu B1–B2", ielts: "IELTS Academy", ai: "Trợ lý AI" };
+    const curriculumGroups = [
+      {
+        title: "Các thì trong tiếng Anh · Tenses",
+        topics: [
+          ["Present Simple", "Hiện tại đơn"],
+          ["Present Continuous", "Hiện tại tiếp diễn"],
+          ["Present Perfect", "Hiện tại hoàn thành"],
+          ["Present Perfect Continuous", "Hiện tại hoàn thành tiếp diễn"],
+          ["Past Simple", "Quá khứ đơn"],
+          ["Past Continuous", "Quá khứ tiếp diễn"],
+          ["Past Perfect", "Quá khứ hoàn thành"],
+          ["Past Perfect Continuous", "Quá khứ hoàn thành tiếp diễn"],
+          ["Future Simple", "Tương lai đơn"],
+          ["Future Continuous", "Tương lai tiếp diễn"],
+          ["Future Perfect", "Tương lai hoàn thành"],
+          ["Future Perfect Continuous", "Tương lai hoàn thành tiếp diễn"]
+        ]
+      },
+      {
+        title: "Từ loại · Parts of Speech",
+        topics: [
+          ["Nouns", "Danh từ"], ["Verbs", "Động từ"], ["Adjectives", "Tính từ"],
+          ["Adverbs", "Trạng từ"], ["Pronouns", "Đại từ"], ["Prepositions", "Giới từ"],
+          ["Conjunctions", "Liên từ"], ["Articles", "Mạo từ"], ["Determiners", "Từ hạn định"],
+          ["Interjections", "Thán từ"]
+        ]
+      },
+      {
+        title: "Các cấu trúc ngữ pháp quan trọng",
+        topics: [
+          ["Passive Voice", "Câu bị động"], ["Conditional Sentences", "Câu điều kiện"],
+          ["Reported Speech", "Câu tường thuật"], ["Comparisons", "Câu so sánh"],
+          ["Tag Questions", "Câu hỏi đuôi"], ["Inversion", "Câu đảo ngữ"],
+          ["Emphasis", "Câu nhấn mạnh"], ["Relative Clauses", "Mệnh đề quan hệ"],
+          ["Adverbial Clauses", "Mệnh đề trạng ngữ"], ["Noun Clauses", "Mệnh đề danh từ"],
+          ["Wish Sentences", "Câu ước"], ["Subjunctive Mood", "Câu giả định"],
+          ["Indirect Questions", "Câu hỏi gián tiếp"], ["Cleft Sentences", "Câu chẻ"]
+        ]
+      },
+      {
+        title: "Động từ và các dạng động từ",
+        topics: [
+          ["Gerunds", "Danh động từ (V-ing)"], ["Infinitives", "Động từ nguyên mẫu"],
+          ["Bare Infinitives", "Nguyên mẫu không To"], ["Modal Verbs", "Động từ khuyết thiếu"],
+          ["Phrasal Verbs", "Cụm động từ"], ["Causative Form", "Thể sai khiến"],
+          ["Linking Verbs", "Động từ nối"],
+          ["Transitive and Intransitive Verbs", "Ngoại động từ và nội động từ"],
+          ["Stative and Dynamic Verbs", "Động từ trạng thái và hành động"]
+        ]
+      },
+      {
+        title: "Các cấu trúc câu và cụm từ",
+        topics: [
+          ["Subject and Predicate", "Chủ ngữ và vị ngữ"],
+          ["Sentence Structures", "Cấu trúc câu"],
+          ["Simple, Compound and Complex Sentences", "Câu đơn, ghép và phức"],
+          ["Word Order", "Trật tự từ"], ["Subject-Verb Agreement", "Sự hòa hợp chủ ngữ và động từ"],
+          ["Parallel Structures", "Cấu trúc song song"], ["Question Forms", "Các dạng câu hỏi"],
+          ["Negation", "Câu phủ định"]
+        ]
+      },
+      {
+        title: "Các dạng cấu trúc thường gặp trong bài thi",
+        topics: [
+          ["Comparison of Adjectives and Adverbs", "So sánh tính từ và trạng từ"],
+          ["Enough / Too", "Cấu trúc Enough và Too"], ["So / Such", "Cấu trúc So và Such"],
+          ["Because / Because of", "Bởi vì"], ["Although / Despite / In spite of", "Mặc dù"],
+          ["So that / In order that", "Để"], ["Therefore / Consequently", "Vì vậy"],
+          ["Both / Either / Neither", "Cấu trúc Both, Either, Neither"],
+          ["Not only...but also", "Không những...mà còn"],
+          ["Either...or / Neither...nor", "Cấu trúc Either...or và Neither...nor"],
+          ["The more...the more", "Càng...càng"],
+          ["Prefer / Would rather / Had better", "Thích hơn / Thà...hơn / Nên"],
+          ["Used to / Be used to / Get used to", "Từng / Quen với / Dần quen với"]
+        ]
+      },
+      {
+        title: "Các chủ điểm bổ trợ",
+        topics: [
+          ["Articles (A / An / The)", "Mạo từ"], ["Quantifiers", "Lượng từ"],
+          ["Prepositional Phrases", "Cụm giới từ"], ["Word Formation", "Cấu tạo từ"],
+          ["Collocations", "Các cụm từ thường đi với nhau"], ["Idioms", "Thành ngữ"],
+          ["Conjunctions", "Liên từ"], ["Punctuation", "Dấu câu"]
+        ]
+      }
+    ];
+    const vocabCategories = {
+      school: "Từ vựng học đường",
+      technology: "Công nghệ",
+      business: "Kinh doanh",
+      science: "Khoa học & sức khỏe",
+      idioms: "Idiom thông dụng"
+    };
+    const vocab = [
+      { category: "school", word: "attend", pos: "VERB · /əˈtend/", meaning: "tham dự, có mặt", example: "I attend lectures every Monday." },
+      { category: "school", word: "assignment", pos: "NOUN · /əˈsaɪnmənt/", meaning: "bài tập được giao", example: "We have to finish the assignment by Friday." },
+      { category: "school", word: "deadline", pos: "NOUN · /ˈdedlaɪn/", meaning: "hạn chót", example: "The deadline for our project is next week." },
+      { category: "school", word: "research", pos: "NOUN · /rɪˈsɜːrtʃ/", meaning: "nghiên cứu", example: "Our research focuses on renewable energy." },
+      { category: "school", word: "scholarship", pos: "NOUN · /ˈskɑːlərʃɪp/", meaning: "học bổng", example: "She received a scholarship to study abroad." },
+      { category: "technology", word: "algorithm", pos: "NOUN · /ˈælɡərɪðəm/", meaning: "thuật toán", example: "The algorithm sorts the data in seconds." },
+      { category: "technology", word: "cybersecurity", pos: "NOUN · /ˌsaɪbərsɪˈkjʊrəti/", meaning: "an ninh mạng", example: "Cybersecurity protects systems from online threats." },
+      { category: "technology", word: "user-friendly", pos: "ADJECTIVE", meaning: "dễ sử dụng, thân thiện với người dùng", example: "The app has a user-friendly design." },
+      { category: "technology", word: "data breach", pos: "NOUN", meaning: "sự rò rỉ dữ liệu", example: "The company informed users about the data breach." },
+      { category: "business", word: "revenue", pos: "NOUN · /ˈrevənuː/", meaning: "doanh thu", example: "Online sales increased the company's revenue." },
+      { category: "business", word: "negotiate", pos: "VERB · /nɪˈɡoʊʃieɪt/", meaning: "đàm phán, thương lượng", example: "They negotiated a better contract." },
+      { category: "business", word: "launch", pos: "VERB · /lɔːntʃ/", meaning: "ra mắt, khởi động", example: "The team will launch its new product in June." },
+      { category: "business", word: "sustainable", pos: "ADJECTIVE", meaning: "bền vững", example: "The company is investing in sustainable packaging." },
+      { category: "science", word: "evidence", pos: "NOUN · /ˈevɪdəns/", meaning: "bằng chứng", example: "The researchers collected evidence from several studies." },
+      { category: "science", word: "symptom", pos: "NOUN · /ˈsɪmptəm/", meaning: "triệu chứng", example: "A fever can be a symptom of an infection." },
+      { category: "science", word: "renewable", pos: "ADJECTIVE", meaning: "có thể tái tạo", example: "Wind is a renewable source of energy." },
+      { category: "science", word: "nutrition", pos: "NOUN · /nuːˈtrɪʃən/", meaning: "dinh dưỡng", example: "Good nutrition supports healthy development." },
+      { category: "idioms", word: "break the ice", pos: "IDIOM", meaning: "phá vỡ sự ngại ngùng ban đầu", example: "A fun game helped break the ice on the first day." },
+      { category: "idioms", word: "hit the books", pos: "IDIOM", meaning: "bắt đầu học chăm chỉ", example: "I have an exam tomorrow, so I need to hit the books." },
+      { category: "idioms", word: "piece of cake", pos: "IDIOM", meaning: "việc rất dễ dàng", example: "The first exercise was a piece of cake." },
+      { category: "idioms", word: "under the weather", pos: "IDIOM", meaning: "cảm thấy không khỏe", example: "I'm feeling a bit under the weather today." },
+      { category: "idioms", word: "on the same page", pos: "IDIOM", meaning: "cùng hiểu và thống nhất với nhau", example: "Let's review the plan to make sure we're on the same page." },
+      { category: "idioms", word: "call it a day", pos: "IDIOM", meaning: "kết thúc công việc trong ngày", example: "We've done enough for today; let's call it a day." }
+    ];
+    let activeCategory = "school";
+    const questions = [
+      { q: "She _____ in this city since 2020.", answers: ["lived", "has lived", "is living", "was living"], correct: 1, explain: "Dùng hiện tại hoàn thành với “since” để nói việc bắt đầu trong quá khứ và vẫn tiếp tục." },
+      { q: "_____ you ever _____ sushi?", answers: ["Did / eat", "Have / eaten", "Are / eating", "Do / ate"], correct: 1, explain: "Câu hỏi về trải nghiệm dùng Have/Has + chủ ngữ + past participle." },
+      { q: "We have known each other _____ five years.", answers: ["since", "for", "from", "during"], correct: 1, explain: "Dùng “for” với khoảng thời gian; “since” đi với mốc thời gian." },
+      { q: "Chọn câu đúng:", answers: ["He have finished his homework.", "He has finish his homework.", "He has finished his homework.", "He finished has his homework."], correct: 2, explain: "Chủ ngữ “He” đi với has; sau has dùng quá khứ phân từ “finished”." },
+      { q: "I _____ my keys. Have you seen them?", answers: ["lost", "have lost", "lose", "am lost"], correct: 1, explain: "Dùng hiện tại hoàn thành vì việc mất chìa khóa có kết quả liên quan đến hiện tại." }
+    ];
+    let wordIndex = 0;
+    let questionIndex = 0;
+    let selectedAnswer = null;
+    let answered = false;
+    let quizStarted = false;
+    let score = 0;
+    let toastTimer;
+    const profileStorageKey = "lingua-demo-profile";
+    let demoProfile = { name: "Minh Anh", birthday: "" };
+    let isEditingProfile = false;
+    const resultKey = "lingua-quiz-results";
+    document.getElementById("today-date").textContent = "📅 " + new Date().toLocaleDateString("vi-VN", { weekday: "long", day: "numeric", month: "long" });
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.remove("hidden");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.add("hidden"), 2600);
+    }
+    const loginModal = document.getElementById("login-modal");
+    const profileForm = document.getElementById("profile-form");
+    function openLogin() {
+      isEditingProfile = !app.classList.contains("hidden");
+      document.getElementById("login-title").textContent = isEditingProfile ? "Chỉnh sửa hồ sơ" : "Hoàn thiện hồ sơ";
+      document.querySelector(".login-modal > p").textContent = isEditingProfile ? "Cập nhật tên và ngày sinh của bạn." : "Nhập tên và ngày sinh để bắt đầu học.";
+      document.getElementById("profile-submit").textContent = isEditingProfile ? "Lưu thay đổi" : "Vào học";
+      document.getElementById("profile-name").value = demoProfile.name;
+      document.getElementById("profile-birthday").value = demoProfile.birthday;
+      document.getElementById("profile-form-status").textContent = "";
+      loginModal.classList.remove("hidden");
+      document.getElementById("profile-name").focus();
+    }
+    profileForm.addEventListener("submit", event => {
+      event.preventDefault();
+      if (!profileForm.reportValidity()) return;
+      const name = document.getElementById("profile-name").value.trim();
+      const birthday = document.getElementById("profile-birthday").value;
+      if (!name || !birthday) {
+        document.getElementById("profile-form-status").textContent = "Vui lòng nhập tên và ngày sinh.";
+        return;
+      }
+      demoProfile = { name, birthday };
+      try {
+        localStorage.setItem(profileStorageKey, JSON.stringify(demoProfile));
+      } catch (error) {
+        console.error("Không thể lưu hồ sơ trên thiết bị:", error);
+        document.getElementById("profile-form-status").textContent = "Không thể lưu hồ sơ trên trình duyệt này.";
+        return;
+      }
+      document.getElementById("user-name").textContent = demoProfile.name;
+      document.getElementById("greeting-name").textContent = demoProfile.name;
+      if (!isEditingProfile) {
+        landing.classList.add("hidden");
+        app.classList.remove("hidden");
+        showView("dashboard");
+      }
+      loginModal.classList.add("hidden");
+      showToast(isEditingProfile ? "Đã cập nhật hồ sơ của bạn." : `Chào ${demoProfile.name}, bắt đầu học thôi! 😊`);
+    });
+    document.querySelectorAll("[data-login]").forEach(button => button.addEventListener("click", openLogin));
+    document.getElementById("close-login").addEventListener("click", () => loginModal.classList.add("hidden"));
+    loginModal.addEventListener("click", event => { if (event.target === loginModal) loginModal.classList.add("hidden"); });
+    document.getElementById("edit-profile").addEventListener("click", openLogin);
+    const now = new Date();
+    const localToday = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    document.getElementById("profile-birthday").max = localToday;
+    try {
+      const savedProfile = JSON.parse(localStorage.getItem(profileStorageKey) || "null");
+      if (savedProfile && typeof savedProfile.name === "string" && typeof savedProfile.birthday === "string") {
+        demoProfile = savedProfile;
+        document.getElementById("user-name").textContent = demoProfile.name;
+        document.getElementById("greeting-name").textContent = demoProfile.name;
+      }
+    } catch (error) {
+      console.error("Không thể đọc hồ sơ đã lưu:", error);
+    }
+    function showView(name) {
+      document.querySelectorAll(".view").forEach(view => view.classList.toggle("active", view.id === "view-" + name));
+      document.querySelectorAll(".side-link[data-view]").forEach(button => button.classList.toggle("active", button.dataset.view === name));
+      document.getElementById("breadcrumb").innerHTML = `Không gian học tập <span style="color:#c0c7d2"> / </span> ${viewNames[name] || "Trang chủ"}`;
+      if (name === "quiz" && !quizStarted) startQuiz();
+      if (name === "vocabulary") renderWord();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    document.querySelectorAll("[data-view]").forEach(button => button.addEventListener("click", () => showView(button.dataset.view)));
+    document.querySelectorAll("[data-open-lesson]").forEach(card => card.addEventListener("click", () => showView("lesson")));
+    document.getElementById("logout").addEventListener("click", () => {
+      app.classList.add("hidden");
+      landing.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    function renderCurriculum() {
+      const curriculum = document.getElementById("curriculum");
+      curriculum.innerHTML = curriculumGroups.map((group, index) => `
+        <details class="curriculum-group"${index === 0 ? " open" : ""}>
+          <summary><span>${group.title}</span><span class="curriculum-count">${group.topics.length} bài học</span></summary>
+          <ul class="curriculum-list">${group.topics.map(([english, vietnamese]) => `<li><strong>${english}</strong><span>${vietnamese}</span></li>`).join("")}</ul>
+        </details>`).join("");
+    }
+    renderCurriculum();
+
+    function renderCategories() {
+      const categories = document.getElementById("vocab-categories");
+      categories.innerHTML = Object.entries(vocabCategories).map(([key, label]) => `<button class="category-button ${key === activeCategory ? "active" : ""}" data-category="${key}">${label}</button>`).join("");
+      categories.querySelectorAll("[data-category]").forEach(button => button.addEventListener("click", () => {
+        activeCategory = button.dataset.category;
+        wordIndex = 0;
+        renderCategories();
+        renderWord();
+      }));
+    }
+    function renderWord() {
+      const categoryWords = vocab.filter(item => item.category === activeCategory);
+      const item = categoryWords[wordIndex];
+      document.getElementById("word-pos").textContent = item.pos;
+      document.getElementById("word-front").textContent = item.word;
+      document.getElementById("word-back").textContent = item.meaning;
+      document.getElementById("word-example").textContent = `“${item.example}”`;
+      document.getElementById("word-index").textContent = `${wordIndex + 1} / ${categoryWords.length}`;
+      document.getElementById("category-name").textContent = vocabCategories[activeCategory];
+      document.getElementById("word-back").classList.add("hidden");
+      document.getElementById("word-example").classList.add("hidden");
+      document.getElementById("flip-card").textContent = "Lật thẻ xem nghĩa ↻";
+    }
+    document.getElementById("flip-card").addEventListener("click", () => {
+      const meaning = document.getElementById("word-back");
+      meaning.classList.toggle("hidden");
+      document.getElementById("word-example").classList.toggle("hidden");
+      document.getElementById("flip-card").textContent = meaning.classList.contains("hidden") ? "Lật thẻ xem nghĩa ↻" : "Đã nhớ từ này ✓";
+    });
+    document.getElementById("next-word").addEventListener("click", () => {
+      const count = vocab.filter(item => item.category === activeCategory).length;
+      wordIndex = (wordIndex + 1) % count;
+      renderWord();
+    });
+    document.getElementById("prev-word").addEventListener("click", () => {
+      const count = vocab.filter(item => item.category === activeCategory).length;
+      wordIndex = (wordIndex - 1 + count) % count;
+      renderWord();
+    });
+    renderCategories();
+
+    function startQuiz() {
+      questionIndex = 0;
+      score = 0;
+      selectedAnswer = null;
+      answered = false;
+      quizStarted = true;
+      renderQuestion();
+    }
+    function renderQuestion() {
+      const current = questions[questionIndex];
+      document.getElementById("quiz-progress").textContent = `CÂU ${questionIndex + 1} / ${questions.length}`;
+      document.getElementById("quiz-question").textContent = current.q;
+      document.getElementById("quiz-feedback").textContent = "";
+      document.getElementById("quiz-next").textContent = "Kiểm tra đáp án";
+      document.getElementById("quiz-next").disabled = false;
+      document.getElementById("quiz-answers").innerHTML = current.answers.map((answer, index) => `<button class="answer-option" data-answer="${index}">${String.fromCharCode(65 + index)}. ${answer}</button>`).join("");
+      document.querySelectorAll(".answer-option").forEach(button => button.addEventListener("click", () => {
+        if (answered) return;
+        selectedAnswer = Number(button.dataset.answer);
+        document.querySelectorAll(".answer-option").forEach(option => option.classList.toggle("selected", option === button));
+      }));
+    }
+    function saveResult(scoreValue = score, total = questions.length, title = "Thì hiện tại hoàn thành") {
+      let results = [];
+      try { results = JSON.parse(localStorage.getItem(resultKey) || "[]"); } catch (error) { console.error("Không thể đọc lịch sử bài kiểm tra:", error); showToast("Không thể đọc lịch sử bài kiểm tra trên thiết bị này."); }
+      const result = { score: scoreValue, total, date: new Date().toISOString(), title };
+      results.unshift(result);
+      try { localStorage.setItem(resultKey, JSON.stringify(results.slice(0, 20))); } catch (error) { console.error("Không thể lưu kết quả bài kiểm tra:", error); showToast("Không thể lưu kết quả trên thiết bị này."); }
+      renderResults();
+    }
+    function renderResults() {
+      let results = [];
+      try { results = JSON.parse(localStorage.getItem(resultKey) || "[]"); } catch (error) { console.error("Không thể đọc lịch sử bài kiểm tra:", error); }
+      if (!results.length) return;
+      const recent = document.getElementById("recent-results");
+      recent.innerHTML = results.slice(0, 3).map(result => {
+        const date = new Date(result.date);
+        return `<div class="activity-row"><div class="activity-badge">⏳</div><div class="activity-copy"><strong>Kiểm tra: ${result.title}</strong><small>${date.toLocaleDateString("vi-VN")} · ${result.total} câu hỏi</small></div><span class="score-tag">${result.score}/${result.total} đúng</span></div>`;
+      }).join("");
+      document.getElementById("test-count").textContent = String(3 + results.length);
+    }
+    const readingExercises = {
+      b1: {
+        level: "B1 · INTERMEDIATE",
+        title: "A library for the whole neighbourhood",
+        paragraphs: [
+          "A small library opened in an empty shop last year. It offers books, but it is also a place where people can meet. Local volunteers help visitors choose books, <span class=\"reading-blank\" data-blank=\"0\">1</span> the library easy to use for everyone.",
+          "Children often visit after school to read quietly or join group activities. The library has become a safe place <span class=\"reading-blank\" data-blank=\"1\">2</span> young people can spend time together.",
+          "The project depends on donations, so volunteers ask the community <span class=\"reading-blank\" data-blank=\"2\">3</span> books that are still in good condition. They also organise events to bring new visitors through the door.",
+          "The library is small, <span class=\"reading-blank\" data-blank=\"3\">4</span> its influence reaches far beyond the shop. Neighbours who once barely spoke now share ideas and help one another."
+        ],
+        questions: [
+          { prompt: "1. Choose the correct verb form.", answers: ["A. making", "B. made", "C. makes", "D. to make"], correct: "A", explanation: "“Making” adds a result to the action in the main clause." },
+          { prompt: "2. Which word refers to a place?", answers: ["A. which", "B. where", "C. whose", "D. what"], correct: "B", explanation: "“Where” introduces a relative clause about a place." },
+          { prompt: "3. Choose the correct verb pattern.", answers: ["A. contribute", "B. contributing", "C. to contribute", "D. contributed"], correct: "C", explanation: "The pattern is “ask someone to do something”." },
+          { prompt: "4. Which linking word shows contrast?", answers: ["A. because", "B. so", "C. but", "D. unless"], correct: "C", explanation: "“But” contrasts the library's small size with its wide influence." }
+        ]
+      },
+      b2: {
+        level: "B2 · UPPER-INTERMEDIATE",
+        title: "Why cities need community gardens",
+        paragraphs: [
+          "As cities grow, residents can feel increasingly disconnected from the places where their food comes from. Community gardens offer a practical response. These shared spaces allow neighbours to grow vegetables together, <span class=\"reading-blank\" data-blank=\"0\">1</span> while making productive use of land that might otherwise remain empty.",
+          "The benefits extend well beyond the harvest. People who take part often learn skills from gardeners of different ages and backgrounds. In this way, a garden can <span class=\"reading-blank\" data-blank=\"1\">2</span> between people who might not otherwise meet. Gardening can also improve well-being: spending time outdoors gives residents a welcome break from screens and daily pressures.",
+          "However, these projects are not automatically successful. Organisers need to agree on how tasks and costs will be shared. If responsibilities are unclear, a small number of volunteers may end up doing most of the work. Long-term access to land is another concern, since unused plots may later be sold for development. For that reason, some groups work with local councils to <span class=\"reading-blank\" data-blank=\"2\">3</span> before investing time and money.",
+          "Despite these challenges, gardens can help communities become more resilient. They do not replace supermarkets or solve every urban problem, but they can encourage people to cooperate and make neighbourhoods more liveable. Their greatest value may be the relationships they help grow, <span class=\"reading-blank\" data-blank=\"3\">4</span> the vegetables themselves."
+        ],
+        questions: [
+          { prompt: "1. What is an additional benefit of community gardens?", answers: ["A. therefore cutting all ties with local shops", "B. and help strengthen a sense of local ownership", "C. although fresh food is rarely needed", "D. unless residents already know one another"], correct: "B", explanation: "“And help strengthen” links two parallel benefits of the gardens." },
+          { prompt: "2. What can a garden do between people who might not meet?", answers: ["A. put an end to disagreements permanently", "B. bridge the gap", "C. take responsibility away from", "D. make it harder to communicate with"], correct: "B", explanation: "“Bridge the gap between” means to bring different people closer." },
+          { prompt: "3. What can groups do to protect long-term access to land?", answers: ["A. take their chances", "B. keep their distance", "C. secure a formal agreement", "D. turn a blind eye"], correct: "C", explanation: "A formal agreement can protect the group's long-term use of the land." },
+          { prompt: "4. What is the greatest value of the gardens, according to the passage?", answers: ["A. rather than", "B. as soon as", "C. in case of", "D. in addition to"], correct: "A", explanation: "“Rather than” contrasts the relationships with the vegetables themselves." }
+        ]
+      }
+    };
+    let activeReadingLevel = "b1";
+    function renderReading() {
+      const exercise = readingExercises[activeReadingLevel];
+      document.querySelectorAll("[data-reading-level]").forEach(button => {
+        const isActive = button.dataset.readingLevel === activeReadingLevel;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+      document.getElementById("reading-exercise").innerHTML = `
+        <article class="reading-passage">
+          <span class="reading-level">${exercise.level} · USE OF ENGLISH</span>
+          <h2>${exercise.title}</h2>
+          ${exercise.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join("")}
+        </article>
+        <aside class="reading-questions">
+          <span class="reading-level">4 GAPS</span>
+          <h2>Choose the best answer</h2>
+          <p>Read the whole passage and choose the option that fits each gap.</p>
+          ${exercise.questions.map((question, index) => `<div class="reading-question"><label for="reading-gap-${index}">${question.prompt}</label><select id="reading-gap-${index}" data-reading-answer="${index}"><option value="">Select an answer...</option>${question.answers.map(answer => `<option value="${answer.charAt(0)}">${answer}</option>`).join("")}</select></div>`).join("")}
+          <div class="reading-feedback" id="reading-feedback" role="status"></div>
+          <button class="btn btn-primary" id="check-reading">Check answers</button>
+          <div class="reading-result hidden" id="reading-result"></div>
+          <button class="btn btn-outline hidden" id="retry-reading" style="width:100%;margin-top:9px">Try again</button>
+        </aside>`;
+      document.getElementById("check-reading").addEventListener("click", checkReading);
+      document.getElementById("retry-reading").addEventListener("click", renderReading);
+    }
+    function checkReading() {
+      const exercise = readingExercises[activeReadingLevel];
+      const selects = [...document.querySelectorAll("[data-reading-answer]")];
+      const feedback = document.getElementById("reading-feedback");
+      if (selects.some(select => !select.value)) {
+        feedback.textContent = "Please answer all four questions before checking.";
+        return;
+      }
+      let readingScore = 0;
+      selects.forEach((select, index) => {
+        const question = exercise.questions[index];
+        const isCorrect = select.value === question.correct;
+        if (isCorrect) readingScore++;
+        select.classList.add(isCorrect ? "correct" : "incorrect");
+        select.disabled = true;
+        const blank = document.querySelector(`[data-blank="${index}"]`);
+        blank.textContent = `${index + 1}: ${question.correct}`;
+        blank.classList.add(isCorrect ? "correct" : "incorrect");
+      });
+      feedback.textContent = exercise.questions.map((question, index) => `${index + 1}. ${question.explanation}`).join(" ");
+      const result = document.getElementById("reading-result");
+      result.innerHTML = `Your score: <strong>${readingScore} / ${exercise.questions.length}</strong><br>Result saved to your learning history.`;
+      result.classList.remove("hidden");
+      document.getElementById("check-reading").classList.add("hidden");
+      document.getElementById("retry-reading").classList.remove("hidden");
+      saveResult(readingScore, exercise.questions.length, `Đọc hiểu ${activeReadingLevel.toUpperCase()}: ${exercise.title}`);
+    }
+    document.querySelectorAll("[data-reading-level]").forEach(button => button.addEventListener("click", () => {
+      activeReadingLevel = button.dataset.readingLevel;
+      renderReading();
+    }));
+    renderReading();
+    const ieltsCorrectAnswers = ["A", "B", "A"];
+    let ieltsSelections = [null, null, null];
+    document.querySelectorAll(".ielts-option").forEach(button => button.addEventListener("click", () => {
+      const question = Number(button.closest("[data-ielts-question]").dataset.ieltsQuestion);
+      ieltsSelections[question] = button.dataset.ieltsOption;
+      button.closest("[data-ielts-question]").querySelectorAll(".ielts-option").forEach(option => option.classList.toggle("selected", option === button));
+    }));
+    document.getElementById("check-ielts").addEventListener("click", () => {
+      const feedback = document.getElementById("ielts-feedback");
+      if (ieltsSelections.some(answer => !answer)) {
+        feedback.textContent = "Please answer all three questions before checking.";
+        return;
+      }
+      let ieltsScore = 0;
+      document.querySelectorAll("[data-ielts-question]").forEach((question, index) => {
+        question.querySelectorAll(".ielts-option").forEach(option => {
+          const isCorrect = option.dataset.ieltsOption === ieltsCorrectAnswers[index];
+          option.classList.toggle("correct", isCorrect);
+          option.classList.toggle("incorrect", option.classList.contains("selected") && !isCorrect);
+          option.disabled = true;
+        });
+        if (ieltsSelections[index] === ieltsCorrectAnswers[index]) ieltsScore++;
+      });
+      feedback.textContent = `Your score: ${ieltsScore} / ${ieltsCorrectAnswers.length}. Green answers are correct.`;
+      document.getElementById("check-ielts").classList.add("hidden");
+      document.getElementById("retry-ielts").classList.remove("hidden");
+    });
+    document.getElementById("retry-ielts").addEventListener("click", () => {
+      ieltsSelections = [null, null, null];
+      document.querySelectorAll(".ielts-option").forEach(option => {
+        option.disabled = false;
+        option.classList.remove("selected", "correct", "incorrect");
+      });
+      document.getElementById("ielts-feedback").textContent = "";
+      document.getElementById("check-ielts").classList.remove("hidden");
+      document.getElementById("retry-ielts").classList.add("hidden");
+    });
+    function handleQuizNext() {
+      if (!answered) {
+        if (selectedAnswer === null) { document.getElementById("quiz-feedback").textContent = "Chọn một đáp án trước nhé!"; return; }
+        answered = true;
+        const current = questions[questionIndex];
+        const options = document.querySelectorAll(".answer-option");
+        options[current.correct].classList.add("correct");
+        if (selectedAnswer === current.correct) score++;
+        else options[selectedAnswer].classList.add("incorrect");
+        document.getElementById("quiz-feedback").textContent = current.explain;
+        document.getElementById("quiz-next").textContent = questionIndex === questions.length - 1 ? "Xem kết quả" : "Câu tiếp theo →";
+        return;
+      }
+      questionIndex++;
+      if (questionIndex < questions.length) {
+        selectedAnswer = null;
+        answered = false;
+        renderQuestion();
+        return;
+      }
+      saveResult();
+      quizStarted = false;
+      document.getElementById("quiz-card").innerHTML = `<div class="result-box"><div style="font-size:35px">${score >= 4 ? "🎉" : "💪"}</div><h2>Hoàn thành bài kiểm tra!</h2><strong>${score} / ${questions.length}</strong><p>${score >= 4 ? "Tuyệt vời! Bạn đã nắm khá vững kiến thức này." : "Đừng lo nhé, hãy ôn lại bài và thử thêm lần nữa!"}<br>Kết quả đã được lưu trên thiết bị của bạn.</p><button class="btn btn-primary" id="retry-quiz">Làm lại bài kiểm tra</button> <button class="btn btn-outline" id="back-home">Về trang chủ</button></div>`;
+      document.getElementById("retry-quiz").addEventListener("click", () => { document.getElementById("quiz-card").innerHTML = `<div class="quiz-progress" id="quiz-progress"></div><h2>Thì hiện tại hoàn thành</h2><div class="quiz-question" id="quiz-question"></div><div class="answers" id="quiz-answers"></div><div class="quiz-footer"><div class="quiz-feedback" id="quiz-feedback"></div><button class="btn btn-primary" id="quiz-next">Kiểm tra đáp án</button></div>`; document.getElementById("quiz-next").addEventListener("click", handleQuizNext); startQuiz(); });
+      document.getElementById("back-home").addEventListener("click", () => showView("dashboard"));
+    }
+    document.getElementById("quiz-next").addEventListener("click", handleQuizNext);
+    renderResults();
+
+    function assistantReply(text) {
+      const lower = text.toLowerCase();
+      if (lower.includes("hiện tại hoàn thành") || lower.includes("present perfect")) return "Thì hiện tại hoàn thành có cấu trúc <strong>S + have/has + V3</strong>. Mình dùng thì này cho trải nghiệm (I have visited Đà Lạt), hoặc hành động bắt đầu trong quá khứ còn tiếp tục (She has studied here for 2 years). Bạn muốn mình cho thêm bài tập không?";
+      if (lower.includes("say") && lower.includes("tell")) return "<strong>Say</strong> tập trung vào lời nói (say something), còn <strong>tell</strong> thường có người nghe theo sau (tell someone something). Ví dụ: “She said hello” và “She told me a story”.";
+      if (lower.includes("idiom")) return "Ba idiom về việc học nhé: <strong>hit the books</strong> (chăm chỉ học), <strong>learn by heart</strong> (học thuộc lòng), <strong>a quick learner</strong> (người tiếp thu nhanh). Bạn muốn thử đặt câu với idiom nào?";
+      if (lower.includes("achieve")) return "Ví dụ nhé: “With regular practice, you can achieve your English goals.” (Với việc luyện tập đều đặn, bạn có thể đạt được mục tiêu tiếng Anh của mình.)";
+      return "Câu hỏi hay đó! Mình là trợ lý demo nên hiện chưa kết nối mô hình AI để hiểu và trả lời mọi chủ đề. Bạn thử hỏi mình về thì hiện tại hoàn thành, “say” và “tell”, idiom về việc học hoặc từ “achieve” nhé. 😊";
+    }
+    function addMessage(text, mine) {
+      const message = document.createElement("div");
+      message.className = "message" + (mine ? " mine" : "");
+      message.innerHTML = text;
+      document.getElementById("messages").appendChild(message);
+      document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
+    }
+    document.getElementById("chat-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const input = document.getElementById("chat-input");
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage(text.replace(/[<>&]/g, character => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[character])), true);
+      input.value = "";
+      setTimeout(() => addMessage(assistantReply(text), false), 350);
+    });
+    document.querySelectorAll(".prompt-button").forEach(button => button.addEventListener("click", () => {
+      document.getElementById("chat-input").value = button.textContent;
+      document.getElementById("chat-input").focus();
+    }));
+    renderWord();
+  </script>
+</body>
+</html>
